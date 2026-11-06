@@ -6,6 +6,7 @@
 [![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](CHANGELOG.md)
 [![Runtime](https://img.shields.io/badge/runtime-Agent%20Skills-purple.svg)](#安装)
 [![Test Prompts](https://img.shields.io/badge/tests-3%20prompts-yellow.svg)](test-prompts.json)
+[![Verify](https://img.shields.io/badge/verify-58%2F58%20facts%20%C2%B7%209%2F9%20prompts-brightgreen.svg)](docs/coverage.md)
 [![Lang](https://img.shields.io/badge/lang-中文-red.svg)](SKILL.md)
 
 > 成本顺序是 **文字 → 图片 → 视频**。越往后越贵，所以检查顺序必须反着来。
@@ -55,10 +56,17 @@ AI 视频最贵的不是生成，是重跑。一条 720p 的 5 秒镜头按秒�
 # 方式一：skills CLI
 npx skills add ysyluminous/ai-video-low-reroll
 
-# 方式二：手动放进 skills 目录
-git clone https://github.com/ysyluminous/ai-video-low-reroll.git \
-  ~/.claude/skills/ai-video-low-reroll
+# 方式二：手动放进你的技能目录
+git clone https://github.com/ysyluminous/ai-video-low-reroll.git <你的 skills 目录>/ai-video-low-reroll
 ```
+
+`<你的 skills 目录>` 按运行环境填，例如：
+
+| 环境 | 常见位置 |
+|---|---|
+| Claude Code | `~/.claude/skills/` |
+| Codex | `~/.codex/skills/` |
+| 其他 Agent Skills 兼容运行时 | 该运行时文档里的 skills 目录 |
 
 **方式三：不装也能用。** 把 `SKILL.md` 全文贴进对话，需要时再贴 `references/prompts.md` 里的对应提示词。
 
@@ -92,9 +100,16 @@ references/
   prompts.md                         9 份可整段复制的提示词
   tool-setup.md                      接入、型号与价格、额度规矩
   model-failure-table.md             20 条易错对照 + 8 条检查 + 修复顺序
+scripts/
+  verify.py                          原文覆盖校验（事实 + 9 段提示词逐行）
+docs/
+  coverage.md                        原文 → 本仓库的章节/提示词映射
+sources/
+  README.md                          原文收录策略（不放全文及原因）
 test-prompts.json                    3 道测试题与评分点
 results.tsv                          按 darwin 格式记录的优化与测评记录
 CHANGELOG.md                         版本记录
+CITATION.cff                         引用信息
 LICENSE                              MIT
 ```
 
@@ -147,6 +162,23 @@ LICENSE                              MIT
 | 附录链接 | 3 / 3 有效 |
 
 复现：`test-prompts.json` 可直接喂给任意 agent；结构分口径见 [darwin-skill](https://github.com/alchaincyf/darwin-skill)。
+
+## 校验
+
+一条命令复现上面的覆盖结论：
+
+```bash
+python scripts/verify.py --source /path/to/原文.md
+```
+
+```
+files: 9/9
+key facts: 58/58
+prompt blocks: 9/9
+PASS
+```
+
+原文有版权，**没有收进仓库**（原因见 [sources/README.md](sources/README.md)）。脚本只读你本地的副本，不做复制或上传。章节与提示词的对应关系见 [docs/coverage.md](docs/coverage.md)。
 
 ## 和原文的对应
 

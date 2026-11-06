@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "如果这份整理帮到了你，请引用本仓库；方法本身请引用原作者。"
+title: "ai-video-low-reroll：低抽卡 AI 短视频产线"
+abstract: "把 AI 短视频的废片率压到最低的操作流程：先图后视频、首尾帧、七段式提示词、提交前审核、四线程协作。"
+authors:
+  - family-names: "月川"
+    alias: "ysyluminous"
+  - family-names: "Eian"
+    given-names: "Eian"
+    alias: "EianLu"
+    website: "https://x.com/EianLu"
+type: software
+version: 0.2.1
+date-released: "2026-11-06"
+license: MIT
+repository-code: "https://github.com/ysyluminous/ai-video-low-reroll"
+keywords:
+  - ai-video
+  - seedance
+  - prompt-engineering
+  - agent-skills
+  - keyframe
