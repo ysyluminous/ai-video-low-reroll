@@ -1,0 +1,4 @@
+timestamp	commit	skill	old_score	new_score	status	dimension	note	eval_mode
+2026-11-06T21:40	HEAD~1	video-low-reroll	-	69.1	baseline	-	v0.1 九维结构自评	dry_run
+2026-11-06T22:05	working	video-low-reroll	69.1	88.1	keep	全维	v0.2 补工具层/四线程/9份提示词/失败分支	dry_run
+2026-11-06T22:10	working	video-low-reroll	-	-	keep	dim8	test-prompts#1 同题对照：无skill 7/42，有skill 41/42	dry_run

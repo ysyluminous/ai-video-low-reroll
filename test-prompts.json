@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "type": "happy_path",
+    "prompt": "深夜便利店，店员给一位只买一颗糖的老人免单，老人走后店员发现柜台多了一张旧照片。做成 20 秒 AI 短片，出前期方案。",
+    "expected": "选片段式结构；故事过 5 条标准；分镜表含 9 项字段且每镜写明什么在动；首尾帧先写后画；提示词用七段式；提交前另开 agent 审核；避开模型弱点。",
+    "rubric": ["structure", "story_5", "storyboard_9", "motion", "prompt_7", "pre_submit_review", "weakness_avoid"]
+  },
+  {
+    "id": 2,
+    "type": "with_reference",
+    "prompt": "参考片是一支 Apple 风格的产品广告，我要做 15 秒咖啡品牌短片。怎么定分镜和配色？",
+    "expected": "先逐帧量参考片的机位和进出画比例；分镜 9 项；独立色表；38%/62% 构图；色块草图转黑白检查；不直接照抄参考片内容。",
+    "rubric": ["reference_measure", "storyboard_9", "color_table", "golden_ratio", "grayscale_check"]
+  },
+  {
+    "id": 3,
+    "type": "trap",
+    "prompt": "客户要求 20 个角色在同一秒同时举手庆祝，画面里还要出现品牌名文字，一条 10 秒镜头拍完。",
+    "expected": "指出同时动作和文字是模型高危项；给出可拍替代：写清先后顺序、分批举手，文字改成虚化纹理或后期贴字；仍是一镜一生成，不硬塞。",
+    "rubric": ["reject_simultaneous", "reject_text", "alternative_given", "no_scope_creep"]
+  }
+]
